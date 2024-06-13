@@ -19,12 +19,13 @@ Este script Bash foi criado para facilitar a configuração do ambiente necessá
    chmod u+x PreReqUbuntu.sh
    ./PreReqUbuntu.sh
    ```
-
+4. Execute o script de Veriificação:
+   ```
+   chmod u+x ver_inst.sh
+   ./ver_inst.sh
+   ```
 O script verificará se as seguintes ferramentas estão instaladas em seu sistema:
-- Node.js
-- npm
-- Docker
-- Go
+- Node.js,npm,Docker,Go
 
 Se alguma dessas ferramentas estiver faltando, o script informará e fornecerá instruções sobre como instalá-las. Se todas as ferramentas estiverem instaladas, o script exibirá uma mensagem indicando que o ambiente está pronto para o Hyperledger Fabric.
 

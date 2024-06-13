@@ -1,4 +1,4 @@
-# Script de Instalação de Pré-requisitos e Verificações para Hyperledger Fabric
+# Script de Instalação de Pré-requisitos e Verificações para Fabric
 
 Este script Bash foi criado para facilitar a configuração do ambiente necessário para trabalhar com o Hyperledger Fabric. Ele verifica se as ferramentas essenciais estão instaladas em seu sistema e fornece instruções sobre como instalá-las, caso contrário.
 

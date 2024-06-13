@@ -34,7 +34,8 @@ if command -v docker-compose &> /dev/null; then
 else
     echo "Docker-compose não está instalado. Por favor, instale o Docker-compose antes de continuar."
     exit 1
-    
+fi
+
 # Verifica se o Go está instalado e mostra sua versão
 if command -v go &> /dev/null; then
     echo "Versão do Go:"

@@ -70,10 +70,7 @@ fi
 echo "Node.js $(node -v)"
 echo "npm $(npm -v)"
 
-echo "Node.js instalado com sucesso!"
-echo "npm $(npm -v) instalado com sucesso!"
-
-printf "\n\nInstalando Docker\n"
+printf "\n\nInstalando Docker....\n"
 
 # Verifica e instala Docker se necessário
 if verificar_instalacao "docker" "Docker"; then

@@ -26,21 +26,15 @@ fi
 
 printf "\n\nInstalando GoLang\n"
 
-GO_VERSION=$(curl -sSL https://golang.org/dl/ | grep -o 'go[0-9.]*linux-amd64.tar.gz' | head -n 1)
-
 if verificar_instalacao "go" "GoLang"; then
     echo "GoLang já está instalado"
 else
     echo "Baixando e instalando GoLang..."
-    GO_VERSION=$(curl -sSL https://golang.org/dl/ | grep -o 'go[0-9.]*linux-amd64.tar.gz' | head -n 1)
-    sudo curl -fsSL https://golang.org/dl/$GO_VERSION --output $GO_VERSION
-    sudo rm -rf /usr/local/go  # Remove a instalação anterior do Go, se houver
-    sudo tar -C /usr/local -xvzf $GO_VERSION  # Extraia o arquivo tar.gz para /usr/local
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+    wget https://golang.org/dl/go1.22.4.linux-amd64.tar.gz^C
+    sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
+    echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
     source ~/.bashrc
 fi
-
-mkdir -p $HOME/go
 
 echo "Instalando Node.js..."
 
@@ -98,18 +92,26 @@ DOCKER_COMPOSE_VERSION=$(curl -sSL https://api.github.com/repos/docker/compose/r
 
 sudo curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-sudo chmod +x /usr/local/bin/docker-compose
-
-rm -f $GO_VERSION get-docker.sh
+sudo chmod u+x /usr/local/bin/docker-compose
 
 cd $HOME
 
 printf "\n\nPersonalizando variáveis de ambiente\n"
 
-echo "export GOPATH=$HOME/go" >> ~/.bashrc
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
+echo "export GOROOT=/usr/local/go" >> ~/.bashrc
+echo "export PATH=$PATH:$GOROOT/bin" >> ~/.bashrc
 
-echo "export GOROOT=/opt/go" >> ~/.bashrc
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bash_profile
+echo "export GOROOT=/usr/local/go" >> ~/.bash_profile
+echo "export PATH=$PATH:$GOROOT/bin" >> ~/.bash_profile
+
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
+echo "export GOROOT=/usr/local/go" >> ~/.profile
+echo "export PATH=$PATH:$GOROOT/bin" >> ~/.profile
 
 source ~/.bashrc
+source ~/.bash_profile
+source ~/.profile
 
 printf "\n\nAmbiente configurado com sucesso\n"
